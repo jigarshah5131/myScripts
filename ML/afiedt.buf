@@ -1,0 +1,9 @@
+select
+        distinct regexp_substr(regexp_replace(filename,'.+.FDEMAF.D',''),'[0-9]{4}') DIR
+        --regexp_replace(filename,'FDEMAF.D','') filename
+--      ,filename
+    from
+        table(rdsadmin.rds_file_util.listdir('RARSS_BLOB_DUMP'))
+    where regexp_substr(regexp_replace(filename,'.+.FDEMAF.D',''),'[0-9]{4}') like '2019'
+and filename like '%FDEMAF%D%'
+/

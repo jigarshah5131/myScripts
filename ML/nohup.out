@@ -1,0 +1,52 @@
+Traceback (most recent call last):
+  File "./grant_permission.py", line 11, in <module>
+    for object in bucket.objects.all():
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/boto3/resources/collection.py", line 83, in __iter__
+    for page in self.pages():
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/boto3/resources/collection.py", line 166, in pages
+    for page in pages:
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/paginate.py", line 255, in __iter__
+    response = self._make_request(current_kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/paginate.py", line 332, in _make_request
+    return self._method(**current_kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/client.py", line 648, in _make_api_call
+    operation_model, request_dict, request_context)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/client.py", line 667, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/endpoint.py", line 102, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/endpoint.py", line 132, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/endpoint.py", line 116, in create_request
+    operation_name=operation_model.name)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/hooks.py", line 356, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/hooks.py", line 228, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/hooks.py", line 211, in _emit
+    response = handler(**kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/signers.py", line 90, in handler
+    return self.sign(operation_name, request)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/signers.py", line 149, in sign
+    auth = self.get_auth_instance(**kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/signers.py", line 229, in get_auth_instance
+    frozen_credentials = self._credentials.get_frozen_credentials()
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 577, in get_frozen_credentials
+    self._refresh()
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 472, in _refresh
+    self._protected_refresh(is_mandatory=is_mandatory_refresh)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 488, in _protected_refresh
+    metadata = self._refresh_using()
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 629, in fetch_credentials
+    return self._get_cached_credentials()
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 639, in _get_cached_credentials
+    response = self._get_credentials()
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/credentials.py", line 772, in _get_credentials
+    return client.assume_role(**kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/oracle/environments/my_env/lib64/python3.4/site-packages/botocore/client.py", line 661, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:sts::150812941021:assumed-role/FFM_FM_PRD-Deployment-Role/i-061077a90d03856f7 is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::150812941021:role/FFM-AWSDatabaseManagement-Role
