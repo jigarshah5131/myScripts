@@ -1,0 +1,23 @@
+<head>
+  <title> {{ title }} </title>
+    <style>
+      table {
+          border-collapse: collapse;
+          width: 95%;
+          background-color: cornsilk;
+      }
+
+      th {
+          padding: 5px;
+          background-color: black;
+          color: white;
+      }
+      td {
+          border: 1px solid #000;
+          width: 800px;
+      }
+            td+td {
+            width: auto;
+      }
+    </style>
+</head>

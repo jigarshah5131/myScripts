@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <style>
+      table {
+          border-collapse: collapse;
+          width: 100%;
+          background-color: cornsilk;
+      }
+
+      th {
+          padding: 5px;
+          background-color: black;
+          color: white;
+      }
+
+      table, th, td {
+          border: 1px solid black;
+          padding: 5px;
+          white-space: nowrap;
+          width: 100%;
+      }
+
+      table td:last-child {
+          width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="backup_table">
+      <tr>
+        <th style="text-align:left;vertical-align:top">Account</th>
+        <th style="text-align:left;vertical-align:top">RDS Identifier</th>
+        <th style="text-align:left;vertical-align:top">Status</th>
+        <th style="text-align:left;vertical-align:top">Size (GB)</th>
+        <th style="text-align:right;vertical-align:to">Engine Version</th>
+        <th style="text-align:center;vertical-align:t">RDS Instance Type</th>
+        <th style="text-align:center;vertical-align:t">Availability Zone</th>
+        <th style="text-align:left;vertical-align:top">Multi-AZ</th>
+        <th style="text-align:left;vertical-align:top">Retention Period</th>
+        <th style="text-align:left;vertical-align:top">Latest Restore Time</th>
+        <th style="text-align:left;vertical-align:top">Latest Restore Point (Minutes)</th>
+      </tr>
+{% for i in databases %}
+      <tr>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.Profile }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.RDSIdentifier}}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.Status }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.Size }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:right;vertical-align:top">{{ i.EngineVersion }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:center;vertical-align:top">{{ i.InstanceType }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:center;vertical-align:top">{{ i.AvailabilityZone }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.MultiAZ }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.RetensionPeriod }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.LatestRestorableTime }}</td>
+        <td style="background-color:{{i.bcolor}};color:{{i.color}};text-align:left;vertical-align:top">{{ i.LatestRestorePoint }}</td>
+      </tr>
+{% endfor %}
+    </table>
+  </body>
+</html>
+

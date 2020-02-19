@@ -1,0 +1,13 @@
+<html>
+  <head>
+     {% include 'header_and_style.html' %}
+  </head>
+  <body>
+    <table id="dashboard_info">
+       {% include 'table_header.html' %}
+{% for i in dashboardinfo %}
+  {% include 'table_data.html' %}
+{% endfor %}
+    </table>
+  </body>
+</html>
