@@ -2,7 +2,7 @@
 import boto3,pprint,argparse,sys,os
 
 client = boto3.client('quicksight')
-response = client.describe_user(AwsAccountId='150812941021',Namespace='default',UserName='Erika.McGowens1@cms.hhs.gov')
+response = client.describe_user(AwsAccountId='150812941021',Namespace='default',UserName='cngu')
 pp = pprint.PrettyPrinter(indent=4)
 
 print (response['User']['Role'])

@@ -24,23 +24,41 @@ for dashmap in dashboards:
     for key in response1:
       if 'DashboardId' in key:
         for d in response1['Permissions']:
-          if dashboard not in dashboardmap.keys():
-            dashboardmap[dashboard] = []
-          dashboardmap[dashboard].append(  
-                                         OrderedDict
-                                         (
-                                          [
+         if dashboard not in dashboardmap.keys():
+              dashboardmap[dashboard] = []
+         username = re.search('default/(.*)',d['Principal']).group(1)
+         print(username)
+          #if username == 'o36x':
+          #if username:
+         try:
+          if 'Group'.lower() not in username.lower():
+           response3 = client.describe_user(AwsAccountId=accountid,Namespace='default',UserName=username)
+           role = response3['User']['Role']
+           dashboardname = dashboard
+           dashboardid   = response1[key]
+           status = response3['User']['Active']
+           email = response3['User']['Email']
+           actions = d['Actions']
+           dashboardmap[dashboard].append(  
+					 OrderedDict
+					 (
+					  [
 					     ('DashboardName' , dashboard),
-					     ('DashboardID'   , response1[key]), 
-					     ('Username', re.search('default/(.*)',d['Principal']).group(1)),
-					     ('Permissions' , d['Actions'])
-                                          ]
-                                         )
-                                        )
-pprint(dashboardmap)
+					     ('DashboardID'   , dashboardid), 
+					     ('Username', username),
+					     ('Permissions' , actions),
+					     ('Email' , email),
+					     ('Status' , status),
+					     ('Role' , role)
+					  ]
+					 )
+					)
+         except Exception as e:
+           print(e)
+#pprint(dashboardmap)
 #jsondash = json.dumps(dashboardmap,indent=4,sort_keys=True)
 jsondash = json.dumps(dashboardmap,indent=4)
-with open('dashmetadatafinal','w') as json_file:
+with open('dashmetadatafinalfull2','w') as json_file:
   json_file.write(jsondash)
 
 """
